@@ -19,6 +19,9 @@ git clone https://${GITHUB_TOKEN}@github.com/${GITHUB_USER}/${GITHUB_REPO}.git t
 echo "entering git repo"
 cd target
 
+echo "Checkout correct branch: ${BASE_BRANCH}"
+git checkout ${BASE_BRANCH}
+
 echo "cache current Gemfile.lock"
 cp Gemfile.lock Gemfile.lock.old
 if [ $? -eq 0 ]
@@ -48,9 +51,9 @@ bundle update
 git add Gemfile.lock
 
 if git diff-index --quiet HEAD --; then
-  echo "your bundle was not updated"
+  echo "bundle was not updated"
 else
-  echo "your bundle was updated"
+  echo "bundle was updated"
   echo "commiting"
   git commit -m "bundle updated"
 

@@ -1,0 +1,27 @@
+kind: bundler-update
+name: Bundler Update
+description: Ensures your Ruby dependencies are kept upto date with the latest gem releases.
+discovers: outdated dependency
+checkout: patch
+author: 
+  name: Luke Roberts
+  email: awsmsrc@gmail.com
+repository:
+  type: git
+  url: https://github.com/pushbit-behaviors/bundler-update
+tone: negative
+active: true
+tags:
+  - Ruby
+files:
+  - Gemfile
+  - Gemfile.lock
+triggers:
+  - task_completed_unbox
+  - cron
+actions:
+  - pull_request
+keywords:
+  - gems
+  - dependencies
+  - bundler
