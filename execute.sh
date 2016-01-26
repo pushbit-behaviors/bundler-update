@@ -8,16 +8,8 @@ rvm list
 echo known ruby versions
 rvm list known
 
-echo "Setting git defaults"
-git config --global user.email "bot@pushbit.co"
-git config --global user.name "Pushbit"
-git config --global push.default simple
-
-echo "cloning git repo"
-git clone https://${GITHUB_TOKEN}@github.com/${GITHUB_USER}/${GITHUB_REPO}.git target
-
 echo "entering git repo"
-cd target
+cd code
 
 echo "cache current Gemfile.lock"
 cp Gemfile.lock Gemfile.lock.old
@@ -35,7 +27,6 @@ ruby --version
 echo "ensure bundler"
 gem install bundler
 gem install faraday
-
 
 echo "checking out new branch"
 git checkout -B pushbit/bundler-update
